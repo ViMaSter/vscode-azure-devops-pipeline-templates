@@ -1,0 +1,18 @@
+# azure pipeline file that runs on master and runs dotnet build with parameterized csproj path 
+parameters:
+- name: csprojPath
+  type: string
+  default: '**/*.csproj'
+
+jobs:
+- job: Build
+  displayName: Build
+  pool:
+    vmImage: 'ubuntu-latest'
+  steps:
+  - task: DotNetCoreCLI@2
+    displayName: 'dotnet build'
+    inputs:
+      command: build
+      projects: ${{ parameters.csprojPath }}
+      arguments: '--configuration Release'

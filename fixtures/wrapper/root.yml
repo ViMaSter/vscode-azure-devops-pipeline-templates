@@ -1,0 +1,22 @@
+# azure pipeline file that runs on master and runs dotnet build using build.tpl.yml
+stages:
+- stage: Build
+  displayName: Build stage
+  jobs:
+  - job: Build
+    displayName: Build
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps:
+    - template: build.tpl.yml
+      parameters:
+        csprojPath: '**/*.csproj'
+    - template: child.${{parameters.placeholder}}.yml
+      parameters:
+        csprojPath: '**/*.csproj'
+    - template: child/child.${{parameters.placeholder}}.yml
+      parameters:
+        csprojPath: '**/*.csproj'
+    - template: ../child.${{parameters.placeholder}}.yml
+      parameters:
+        csprojPath: '**/*.csproj'

@@ -1,0 +1,32 @@
+{
+	"name": "azure-devops-pipeline-templates",
+	"displayName": "Azure DevOps Pipeline Templates",
+	"description": "Jump to template files",
+	"version": "0.0.1",
+	"publisher": "vimaster",
+	"repository": "https://github.com/ViMaSter/vscode-azure-devops-pipeline-templates",
+	"engines": {
+		"vscode": "^1.74.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onLanguage:yaml"
+	],
+	"main": "./out/extension.js",
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"lint": "eslint \"src/**/*.ts\"",
+		"watch": "tsc -watch -p ./"
+	},
+	"devDependencies": {
+		"@types/node": "^16.18.34",
+		"@types/vscode": "^1.73.0",
+		"@typescript-eslint/eslint-plugin": "^5.42.0",
+		"@typescript-eslint/parser": "^5.42.0",
+		"eslint": "^8.26.0",
+		"typescript": "^5.1.3"
+	}
+}
